@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Corolla WeddingExpo Admin</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script>
+        var sc = sc || {};
+    </script>
+</head>
+
+<body ng-app="scApp" ng-controller="RootController">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Corolla WeddingExpo Admin</a>
+            </div>
+            <!-- /.navbar-header -->
+            <div class="navbar-default sidebar" role="navigation" ng-show="auth">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <!--<li>
+                            <a href="#/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>-->
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 中奖记录<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">巡展<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#/records?a=1">默认</a>
+                                        </li>
+                                        <li ng-repeat="area in xunzhanData">
+                                            <a href="#/records?a=1&area={{ area.$id }}">{{ area.$id }}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">婚博会<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#/records?a=2">默认</a>
+                                        </li>
+                                        <li ng-repeat="area in hunbohuiData">
+                                            <a href="#/records?a=2&area={{ area.$id }}">{{ area.$id }}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li ng-hide="adminPermission==1">
+                                    <a href="#/records?a=3">俱乐部</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!--<li>
+                            <a href="export/toexcel.php?token={{auth.token}}"><i class="fa fa-table fa-fw"></i> 下载成绩列表</a>
+                        </li>-->
+                        <li ng-hide="adminPermission==1">
+                            <a href="#"><i class="fa fa-table"></i> 奖品配置<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">巡展<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#/awards?a=1">默认</a>
+                                        </li>
+                                        <li ng-repeat="area in xunzhanData">
+                                            <a href="#/awards?a=1&area={{ area.$id }}">{{ area.$id }}</a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <li>
+                                        <a href="#">婚博会<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="#/awards?a=2">默认</a>
+                                            </li>
+                                            <li ng-repeat="area in hunbohuiData">
+                                                <a href="#/awards?a=2&area={{ area.$id }}">{{ area.$id }}</a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </li>
+                                <li>
+                                    <a href="#/awards?a=3">俱乐部</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a ng-click="logout()"><i class="fa fa-sign-out"></i> 退出</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper" ng-view>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/moment-with-locales.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/seco-helper.js"></script>
+    <script src="js/wilddog.js"></script>
+    <script src="js/wild-angular.min.js"></script>
+    <script src="js/dirPagination.js"></script>
+    <script src="js/seco-app-admin.js"></script>
+</body>
+
+</html>

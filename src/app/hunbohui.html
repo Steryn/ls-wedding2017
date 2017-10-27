@@ -1,0 +1,107 @@
+<section class="hb" sc-on-delay="200">
+    <div class="slogan">
+        <img src="assets/image/slogan2.png" alt="">
+    </div>
+
+    <div class="hb-form">
+        <img src="assets/image/hb-form.png" alt="">
+        <div class="form-content">
+            <form name="myForm" sc-form-validation areas-form scroll>
+                <div class="inner">
+                    <div class="form-group">
+                        <label>姓　 名:</label>
+                        <input class='name' type="text" ng-model="record.name" required ng-pattern="/[\u4E00-\uFAFF]/" ng-minlength="2" ng-maxlength="6" placeholder="请输入姓名" data-msg="请输入正确的姓名" />
+                    </div>
+                    <div class="form-group">
+                        <label>性　 别:</label>
+                        <div class="select-sex">
+                            <input class="radio" type="radio" id="sexm" name="sex" value="男" required data-msg="请选择性别" ng-model="record.sex" />
+                            <label for="sexm">男</label>
+                        </div>
+                        <div class="select-sex">
+                            <input class="radio" type="radio" id="sexw" name="sex" value="女" required data-msg="请选择性别" ng-model="record.sex" />
+                            <label for="sexw">女</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>手　 机:</label>
+                        <input class="tel" type="tel" ng-model="record.tel" required ng-pattern="/^1\d{10}$/" placeholder="请输入手机号码" data-msg="请输入正确的手机号码" />
+                    </div>
+                    <div class="form-group">
+                        <label>购车计划:</label>
+                        <div class="select-box">
+                            <select class="lever" ng-model="record.buyCarTime" ng-options="option for option in options.buyCarTimes" required data-msg="请选择意向购车时间">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>意向车型:</label>
+                        <div class="select-box">
+                            <select class="carModel" ng-model="record.haveCar" ng-options="option for option in options.haveCars" required data-msg="请选择意向车型">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>选择经销商:</label>
+                        <div class="select-box">
+                            <select class="province" ng-model="record.province" required data-msg="请选择省份">
+                            <option value="">选择省份</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <div class="select-box">
+                            <select class="city" ng-model="record.city" required data-msg="请选择城市">
+                            <option value="">请选择城市</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <div class="select-box">
+                            <select class="dealercode" ng-model="record.dealer" required data-msg="请选择经销商">
+                            <option value="">请选择经销商</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <a class="btn-rule" sc-on-add=".hb-rule" ga-event="info"></a>
+            <a class="btn-sub" ng-click="submit()" ga-event="join"></a>
+        </div>
+    </div>
+</section>
+<!--浮层部分-->
+<div class="hb-rule upper">
+    <div class="hb-behind">
+        <img src="assets/image/hb-rule.png" alt="">
+        <div>
+            <img src="assets/image/hb-heart.png" alt="">
+        </div>
+    </div>
+    <div class="prize">
+        <div class="prize-1">
+            <div><img src="assets/image/hb-rule-1.png" alt=""></div>
+            <div><img src="assets/image/hb-rule-1b.png" alt=""></div>
+            <div><img src="assets/image/hb-rule-1a.png" alt=""></div>
+        </div>
+        <div class="prize-2">
+            <div><img src="assets/image/xz-rule-2.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-2b.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-2a.png" alt=""></div>
+        </div>
+        <div class="prize-3">
+            <img src="assets/image/hb-rule-3.png" alt="">
+        </div>
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div>
+        <a class="close" sc-on-remove=".hb-rule"></a>
+    </div>
+</div>

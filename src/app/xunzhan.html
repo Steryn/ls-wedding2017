@@ -1,0 +1,207 @@
+<section class="tour" sc-on-delay="100">
+    <div class="slogan">
+        <img src="assets/image/slogan.png" alt="">
+    </div>
+    <div class="form-vice-text">
+        <img src="assets/image/vice-text.png" alt="">
+    </div>
+    <div class="tour-btn">
+        <div class="vice-btn">
+            <img src="assets/image/vice-btn.png" alt="">
+            <a class="btn-left" sc-on-add=".tour-route" carousel=".owl-theme" ga-event="line"></a>
+            <a class="btn-right" sc-on-add=".tour-query" ga-event="search"></a>
+        </div>
+        <div class="main-btn">
+            <img src="assets/image/main-btn.png" alt="">
+            <a class="btn-left" sc-on-add=".tour-rule" ga-event="info"></a>
+            <a class="btn-right" sc-on-add=".tour-contact" ga-event="join" scrollRefresh></a>
+        </div>
+    </div>
+</section>
+<!--浮层部分-->
+<div class="tour-rule upper">
+    <div>
+        <img src="assets/image/xz-rule.png" alt="">
+    </div>
+    <div class="prize">
+        <div class="prize-1">
+            <div><img src="assets/image/xz-rule-1.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-1b.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-1a.png" alt=""></div>
+        </div>
+        <div class="prize-2">
+            <div><img src="assets/image/xz-rule-2.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-2b.png" alt=""></div>
+            <div><img src="assets/image/xz-rule-2a.png" alt=""></div>
+        </div>
+        <div class="prize-3">
+            <img src="assets/image/xz-rule-3.png" alt="">
+        </div>
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div>
+        <a class="close" sc-on-remove=".tour-rule"></a>
+    </div>
+</div>
+<div class="tour-route upper">
+    <div class="owl">
+        <img src="assets/image/xz-route.png" alt="">
+    </div>
+    <div class="lunbo">
+        <div class="content-parent">
+            <div class="content owl-carousel owl-theme">
+                <div class="item"><img src="assets/image/xz-route-1.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-2.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-3.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-4.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-5.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-6.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-7.png" alt=""></div>
+                <div class="item"><img src="assets/image/xz-route-8.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div class="closep">
+        <a class="close" sc-on-remove=".tour-route"></a>
+    </div>
+</div>
+<div class="tour-query upper">
+    <div>
+        <img src="assets/image/xz-query.png" alt="">
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div class="form-content">
+        <form name="myForm1" sc-form-validation>
+            <div class="inner">
+                <div class="form-group">
+                    <label>姓　 名:</label>
+                    <input type="text" ng-model="record2.name" required ng-pattern="/[\u4E00-\uFAFF]/" ng-minlength="2" ng-maxlength="6" data-msg="请输入正确的姓名" />
+                </div>
+                <div class="form-group">
+                    <label>手　 机:</label>
+                    <input type="tel" placeholder="请正确填写您的手机号码" ng-model="record2.tel" required ng-pattern="/^1\d{10}$/" data-msg="请输入正确的手机号码" />
+                    <!--<span class="zhu">注：同一手机号码仅限提交一次</span>-->
+                </div>
+            </div>
+        </form>
+        <a class="close" sc-on-remove=".tour-query"></a>
+        <a class="btn-sub" ng-click="submit2()"></a>
+    </div>
+</div>
+<div class="tour-contact upper">
+    <div class="form-content">
+        <img src="assets/image/xz-contact.png">
+        <form name="myForm" sc-form-validation areas-form scroll>
+            <div class="inner">
+                <div class="form-group">
+                    <label>姓　 名:</label>
+                    <input class="name" type="text" ng-model="record.name" required ng-pattern="/[\u4E00-\uFAFF]/" ng-minlength="2" ng-maxlength="6" placeholder="请输入姓名" data-msg="请输入正确的姓名" />
+                </div>
+                <div class="form-group">
+                    <label>性　 别:</label>
+                    <div class="select-sex">
+                        <input class="radio" type="radio" id="sexm" name="sex" value="男" required data-msg="请选择性别" ng-model="record.sex" />
+                        <label for="sexm">男</label>
+                    </div>
+                    <div class="select-sex">
+                        <input class="radio" type="radio" id="sexw" name="sex" value="女" required data-msg="请选择性别" ng-model="record.sex" />
+                        <label for="sexw">女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>手　 机:</label>
+                    <input class="tel" type="tel" ng-model="record.tel" required ng-pattern="/^1\d{10}$/" placeholder="请输入手机号码" data-msg="请输入正确的手机号码" />
+                </div>
+                <div class="form-group">
+                    <label>购车计划:</label>
+                    <div class="select-box">
+                        <select class="lever" ng-model="record.buyCarTime" ng-options="option for option in options.buyCarTimes" required data-msg="请选择意向购车时间">
+                        <option value="">选择时间</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>意向车型:</label>
+                    <div class="select-box">
+                        <select class="carModel" ng-model="record.haveCar" ng-options="option for option in options.haveCars" required data-msg="请选择意向车型">
+                        <option value="">选择车型</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>选择经销商:</label>
+                    <div class="select-box">
+                        <select class="province" ng-model="record.province" required data-msg="请选择省份">
+                        <option value="">选择省份</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <div class="select-box">
+                        <select class="city" ng-model="record.city" required data-msg="请选择城市">
+                        <option value="">请选择城市</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <div class="select-box">
+                        <select class="dealercode" ng-model="record.dealer" required data-msg="请选择经销商" disabled>
+                        <option value="">请选择经销商</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <a class="close" sc-on-remove=".tour-contact"></a>
+        <a class="submit" ng-click="submit()"></a>
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+</div>
+<!--查询结果浮层-->
+<div class="modal modal-all xz-modal upper">
+    <div class="modal-bg">
+        <a class="state" sc-on-add=".share" sc-on-remove=".xz-modal"></a>
+    </div>
+    <div class="animate" ng-hide="code=='NONE'">
+        <img src="assets/image/xz-query-animate.png" />
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A1-1'}">
+        <img src="assets/image/xz-query-1a.png" />
+        <div class="onRemove" sc-on-remove=".xz-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A1-2'}">
+        <img src="assets/image/xz-query-1b.png" />
+        <div class="onRemove" sc-on-remove=".xz-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A2-1'}">
+        <img src="assets/image/xz-query-2a.png" />
+        <div class="onRemove" sc-on-remove=".xz-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A2-2'}">
+        <img src="assets/image/xz-query-2b.png" />
+        <div class="onRemove" sc-on-remove=".xz-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <!--<div class=" border-img" ng-class="{appear:loot.code=='NONE'}">
+        <img src="assets/image/club-query-not.png" />
+        <a class="state state2"></a>
+    </div>-->
+</div>

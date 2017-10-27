@@ -1,0 +1,21 @@
+<section class="comment" ng-controller="CommentController">
+    <div class="info-pic">
+        <i><img src="assets/image/info-feel-pic1.png" alt=""></i>
+        <i><img src="assets/image/info-feel-pic2.png" alt=""></i>
+    </div>
+    <div class="info-close">
+        <img src="assets/image/info-feel-close.png" alt="">
+        <a href="#/info"></a>
+    </div>
+    <div class="content" scroll="content">
+        <ul>
+            <li ng-repeat="user in users" ng-hide="!user.commentShow" repeat-finish="renderFinish('content')">
+                <div class="info-p">
+                    <span>{{user.name}}{{user.tel | mobileMask}}</span>
+                    <span>{{user.time | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <p class="comment-p">{{user.comment}}</p>
+            </li>
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,226 @@
+<section class="club" sc-on-delay="100" disable-touch>
+    <div class="slogan">
+        <img src="assets/image/slogan3.png" alt="">
+    </div>
+    <div class="club-text">
+        <img src="assets/image/club-vice-text.png" alt="">
+    </div>
+    <div class="club-btn">
+        <img src="assets/image/club-btn.png" alt="">
+        <div>
+            <a sc-on-add=".club-form" ga-event="join"></a>
+            <a sc-on-add=".club-rule" ga-event="info"></a>
+            <a sc-on-add=".club-query" ga-event="search"></a>
+        </div>
+    </div>
+</section>
+<!--浮层部分-->
+<div class="club-form upper">
+    <div class="form-content" scroll>
+        <div>
+            <img src="assets/image/club-form.png" alt="">
+            <form name="myForm" id="myForm" sc-form-validation>
+                <div class="inner">
+                    <div class="form-group">
+                        <label>姓　　名:</label>
+                        <input type="text" ng-model="record.name" required ng-pattern="/[\u4E00-\uFAFF]/" ng-minlength="2" ng-maxlength="6" data-msg="请输入正确的姓名" />
+                    </div>
+                    <div class="form-group">
+                        <label>性　　别:</label>
+                        <div class="select-sex">
+                            <input class="radio" type="radio" id="sexm" name="sex" value="男" required data-msg="请选择性别" ng-model="record.sex" />
+                            <label for="sexm">男</label>
+                        </div>
+                        <div class="select-sex">
+                            <input class="radio" type="radio" id="sexw" name="sex" value="女" required data-msg="请选择性别" ng-model="record.sex" />
+                            <label for="sexw">女</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>手　　机:</label>
+                        <input type="tel" placeholder="请正确填写您的手机号码" ng-model="record.tel" required ng-pattern="/^(130|131|132|155|156|186|185|186|185|134|135|136|137|138|139|150|151|152|157|158|159|182|183|188|187|133|153|180|181|189)\d{8}$/" data-msg="请输入正确的手机号码" />
+                        <!--<span class="zhu">注：同一手机号码仅限提交一次</span>-->
+                    </div>
+                    <div class="form-group">
+                        <label>外观方面:</label>
+                        <div class="three">
+                            <div>
+                                <input class="radio" id="exterior-fine" type="radio" name="exterior" value="很好" required data-msg="请选择外观" ng-model="record.feedback.exterior" />
+                                <label for="exterior-fine">很好</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="exterior-commonly" type="radio" name="exterior" value="一般" required data-msg="请选择外观" ng-model="record.feedback.exterior" />
+                                <label for="exterior-commonly">一般</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="exterior-bad" type="radio" name="exterior" value="不好" required data-msg="请选择外观" ng-model="record.feedback.exterior" />
+                                <label for="exterior-bad">不好</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>动力方面:</label>
+                        <div class="three">
+                            <div>
+                                <input class="radio" id="power-fine" type="radio" name="power" value="很好" required data-msg="请选择动力" ng-model="record.feedback.power" />
+                                <label for="power-fine">很好</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="power-commonly" type="radio" name="power" value="一般" required data-msg="请选择动力" ng-model="record.feedback.power" />
+                                <label for="power-commonly">一般</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="power-bad" type="radio" name="power" value="不好" required data-msg="请选择动力" ng-model="record.feedback.power" />
+                                <label for="power-bad">不好</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>空间方面:</label>
+                        <div class="three">
+                            <div>
+                                <input class="radio" id="space-fine" type="radio" name="space" value="很好" required data-msg="请选择空间" ng-model="record.feedback.space" />
+                                <label for="space-fine">很好</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="space-commonly" type="radio" name="space" value="一般" required data-msg="请选择空间" ng-model="record.feedback.space" />
+                                <label for="space-commonly">一般</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="space-bad" type="radio" name="space" value="不好" required data-msg="请选择空间" ng-model="record.feedback.space" />
+                                <label for="space-bad">不好</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>操控方面:</label>
+                        <div class="three">
+                            <div>
+                                <input class="radio" id="control-fine" type="radio" name="control" value="很好" required data-msg="请选择操控" ng-model="record.feedback.control" />
+                                <label for="control-fine">很好</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="control-commonly" type="radio" name="control" value="一般" required data-msg="请选择操控" ng-model="record.feedback.control" />
+                                <label for="control-commonly">一般</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="control-bad" type="radio" name="control" value="不好" required data-msg="请选择操控" ng-model="record.feedback.control" />
+                                <label for="control-bad">不好</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>安全方面:</label>
+                        <div class="three">
+                            <div>
+                                <input class="radio" id="safety-fine" type="radio" name="safety" value="很好" required data-msg="请选择安全" ng-model="record.feedback.safety" />
+                                <label for="safety-fine">很好</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="safety-commonly" type="radio" name="safety" value="一般" required data-msg="请选择安全" ng-model="record.feedback.safety" />
+                                <label for="safety-commonly">一般</label>
+                            </div>
+                            <div>
+                                <input class="radio" id="safety-bad" type="radio" name="safety" value="不好" required data-msg="请选择安全" ng-model="record.feedback.safety" />
+                                <label for="safety-bad">不好</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-textarea">
+                    <!--<label>试驾体验</label>-->
+                    <!--<div class="text" add-word="record,comment">-->
+                    <!--<a>D-4T发动机动力强劲</a>
+                            <a>空间大</a>
+                            <a>操控灵活</a>-->
+                    <textarea name="comment" ng-model="record.comment" required ng-minlength="20" data-msg="您填写的用车心得文字太少了哦~请再写点什么吧~" placeholder="请填写试驾体验"></textarea>
+                    <!--</div>-->
+                </div>
+            </form>
+            <a class="close" sc-on-remove=".club-form"></a>
+            <a class="btn-sub" ng-click="submit()" ga-event="confirm"></a>
+        </div>
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+
+</div>
+<div class="club-rule upper">
+    <div>
+        <img src="assets/image/club-rule.png" alt="">
+    </div>
+    <div class="coupon">
+        <img src="assets/image/club-rule-a.png" alt="">
+        <img src="assets/image/club-rule-b.png" alt="">
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div>
+        <a class="close" sc-on-remove=".club-rule"></a>
+    </div>
+</div>
+<div class="club-query upper">
+    <div>
+        <img src="assets/image/club-query.png" alt="">
+    </div>
+    <div class="lantern">
+        <img src="assets/image/xz-rule-lantern-left.png" alt="">
+        <img src="assets/image/xz-rule-lantern-right.png" alt="">
+    </div>
+    <div class="form-content">
+        <form name="myForm1" sc-form-validation>
+            <div class="inner">
+                <div class="form-group">
+                    <label>姓　 名:</label>
+                    <input type="text" ng-model="record2.name" required ng-pattern="/[\u4E00-\uFAFF]/" ng-minlength="2" ng-maxlength="6" data-msg="请输入正确的姓名" />
+                </div>
+                <div class="form-group">
+                    <label>手　 机:</label>
+                    <input type="tel" placeholder="请正确填写您的手机号码" ng-model="record2.tel" required ng-pattern="/^1\d{10}$/" data-msg="请输入正确的手机号码" />
+                    <!--<span class="zhu">注：同一手机号码仅限提交一次</span>-->
+                </div>
+            </div>
+        </form>
+        <a class="close" sc-on-remove=".club-query"></a>
+        <a class="btn-sub" ng-click="submit2()"></a>
+    </div>
+</div>
+<div class="club-fail upper">
+    <div class="club-contain">
+        <img src="assets/image/club-query-not.png" alt="">
+    </div>
+    <div class="bg-black" sc-on-remove=".club-fail"></div>
+    <a class="close" href="http://corollaclub.ftms.com.cn/user/signup" ga-event="register"></a>
+</div>
+
+<!--查询结果浮层-->
+<div class="modal modal-all club-modal upper">
+    <div class="modal-bg">
+        <a class="state" sc-on-add=".share" sc-on-remove=".club-modal"></a>
+    </div>
+    <div class="animate" ng-hide="code=='NONE'">
+        <img src="assets/image/club-query-animate.png" />
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A1-1'}">
+        <img src="assets/image/club-query-1.png" />
+        <div class="onRemove" sc-on-remove=".club-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <div class="border-img" ng-class="{appear:code=='A1-2'}">
+        <img src="assets/image/club-query-2.png" />
+        <div class="onRemove" sc-on-remove=".club-modal"></div>
+        <a class="state state1" href="http://www.jiehun.com.cn/m/" ga-event="jiehun"></a>
+    </div>
+    <!--<div class=" border-img" ng-class="{appear:loot.code=='NONE'}">
+        <img src="assets/image/club-query-not.png" />
+        <a class="state state2"></a>
+    </div>-->
+</div>
+
+<section class="pc">
+    <img src="assets/image/pc.jpg">
+</section>

@@ -1,0 +1,216 @@
+<div class="row" ng-controller="RecordsController">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <!--<h1>Example page header <small>Subtext for header</small></h1>-->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    当前城市：{{ childArea || '默认' }}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#/records?a={{ currentArea }}">默认</a>
+                    </li>
+                    <li ng-repeat="area in cityData">
+                        <a href="#/records?a={{ currentArea }}&area={{ area.$id }}">{{ area.$id }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="breadcrumb">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="start" placeholder="起始日期（包含）">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="end" placeholder="结束日期（不包含）">
+                </div>
+                <a type="submit" href="export/toexcel.php?token={{auth.token}}&path={{downloadPath}}&start={{start}}&end={{end}}" class="btn btn-default">下载范围数据</a>
+                <a class="btn btn-primary pull-right" href="export/toexcel.php?token={{auth.token}}&path={{downloadPath}}">下载全部数据</a>
+            </form>
+            <p class="help-block">日期格式：2016-12-03 10:35:27</p>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <!--<div class="panel panel-default" ng-hide="childArea">
+            <div class="panel-heading">
+                {{ dataPath }} {{ childArea }} 子区管理
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>子区名称</th>
+                                    <th width="90">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in areaData">
+                                    <td>1</td>
+                                    <td>{{item.$id}}</td>
+                                    <td><a ng-click="removeChildArea(item)">删除</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ dataPath }} {{ childArea }} 奖品核销
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="input-group custom-search-form">
+                            <input type="text" ng-model="searchTel" class="form-control" placeholder="搜索手机号">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit" ng-click="getRecord(searchTel)">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 text-center" ng-hide="searchRecordsShow">没有数据！</div>
+                    <div class="col-lg-12" ng-hide="!searchRecordsShow">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>姓名</th>
+                                        <th>性别</th>
+                                        <th>手机号</th>
+                                        <th>奖品</th>
+                                        <th>购车时间</th>
+                                        <th>意向车型</th>
+                                        <th ng-hide="dataPath=='club'">经销商</th>
+                                        <th ng-hide="dataPath!='club'">外观</th>
+                                        <th ng-hide="dataPath!='club'">动力</th>
+                                        <th ng-hide="dataPath!='club'">空间</th>
+                                        <th ng-hide="dataPath!='club'">操控</th>
+                                        <th ng-hide="dataPath!='club'">安全</th>
+                                        <th ng-hide="dataPath!='club'">评论</th>
+                                        <th>提交时间</th>
+                                        <th>来源</th>
+                                        <th>设备</th>
+                                        <th width="90">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="record in searchRecords">
+                                        <td>1</td>
+                                        <td>{{record.name}}</td>
+                                        <td>{{record.sex}}</td>
+                                        <td>{{record.tel}}</td>
+                                        <td>{{record.award}} {{record.awardReceive ? '已发放' : ''}}</td>
+                                        <td>{{record.buyCarTime}}</td>
+                                        <td>{{record.haveCar}}</td>
+                                        <td ng-hide="dataPath=='club'">{{record.dealer}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.exterior}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.power}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.space}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.control}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.safety}}</td>
+                                        <td ng-hide="dataPath!='club'">
+                                            <input ng-hide="!record.comment || adminPermission==1" type="checkbox" ng-model="record.commentShow" ng-change="searchRecords.$save(record)"> {{record.comment}}
+                                        </td>
+                                        <td>{{record.awardTime ? record.awardTime : record.time | timestamp:'MM-DD HH:mm:ss'}}</td>
+                                        <td>{{record.utmSource}}</td>
+                                        <td>{{record.device}}</td>
+                                        <td>
+                                            <a ng-hide="!record.award" ng-click="setRecord(record,'searchRecords')">
+                                                {{record.awardReceive ? '已核销' : '核销'}}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <dir-pagination-controls></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ dataPath }} {{ childArea }} 获奖记录 总数：{{ recordCount }}，得奖总数：{{ awardCount }}
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>姓名</th>
+                                        <th>性别</th>
+                                        <th>手机号</th>
+                                        <th>奖品</th>
+                                        <th>购车时间</th>
+                                        <th>意向车型</th>
+                                        <th ng-hide="dataPath=='club'">经销商</th>
+                                        <th ng-hide="dataPath!='club'">外观</th>
+                                        <th ng-hide="dataPath!='club'">动力</th>
+                                        <th ng-hide="dataPath!='club'">空间</th>
+                                        <th ng-hide="dataPath!='club'">操控</th>
+                                        <th ng-hide="dataPath!='club'">安全</th>
+                                        <th ng-hide="dataPath!='club'">评论</th>
+                                        <th>提交时间</th>
+                                        <th>来源</th>
+                                        <th>设备</th>
+                                        <th width="90">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="record in records | orderBy:'-time' | itemsPerPage: 200">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{record.name}}</td>
+                                        <td>{{record.sex}}</td>
+                                        <td>{{record.tel}}</td>
+                                        <td>{{record.award}} {{record.awardReceive ? '已发放' : ''}}</td>
+                                        <td>{{record.buyCarTime}}</td>
+                                        <td>{{record.haveCar}}</td>
+                                        <td ng-hide="dataPath=='club'">{{record.dealer}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.exterior}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.power}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.space}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.control}}</td>
+                                        <td ng-hide="dataPath!='club'">{{record.feedback.safety}}</td>
+                                        <td ng-hide="dataPath!='club'">
+                                            <input ng-hide="!record.comment || adminPermission==1" type="checkbox" ng-model="record.commentShow" ng-change="records.$save(record)"> {{record.comment}}
+                                        </td>
+                                        <td>{{record.awardTime ? record.awardTime : record.time | timestamp:'MM-DD HH:mm:ss'}}</td>
+                                        <td>{{record.utmSource}}</td>
+                                        <td>{{record.device}}</td>
+                                        <td>
+                                            <a ng-hide="!record.award" ng-click="setRecord(record,'records')">
+                                                {{record.awardReceive ? '已核销' : '核销'}}
+                                            </a>
+                                            <a ng-click="removeRecord(record)" ng-hide="adminPermission==1">删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <dir-pagination-controls></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

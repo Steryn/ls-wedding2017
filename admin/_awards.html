@@ -1,0 +1,95 @@
+<div class="row" ng-controller="AwardsController">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <!--<h1>Example page header <small>Subtext for header</small></h1>-->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    当前城市：{{ childArea || '默认' }}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#/awards?a={{ currentArea }}">默认</a>
+                    </li>
+                    <li ng-repeat="area in cityData">
+                        <a href="#/awards?a={{ currentArea }}&area={{ area.$id }}">{{ area.$id }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-default" ng-hide="childArea">
+            <div class="panel-heading">
+                {{ dataPath }} {{ childArea }} 新增奖品
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <form role="form">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="奖品名称" ng-model="newAward.name">
+                            </div>
+                            <a class="btn btn-primary" ng-click="add(newAward)">新增</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" ng-hide="!childArea">
+            <a class="btn btn-primary" ng-click="copyAward()">克隆奖品</a>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ dataPath }} {{ childArea }} 奖品列表
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form name="awardsList">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>奖品名称</th>
+                                            <th>奖品数量</th>
+                                            <th>中奖几率</th>
+                                            <th>中奖间隔(秒)</th>
+                                            <th>已中次数</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="award in awards">
+                                            <td>
+                                                <input ng-hide="childArea" type="text" ng-model="award.code" style="width:40px;">
+                                                <span ng-hide="!childArea">{{award.code}}</span>
+                                            </td>
+                                            <td>
+                                                <input ng-hide="childArea" type="text" ng-model="award.name" style="width:120px;">
+                                                <span ng-hide="!childArea">{{award.name}}</span>
+                                            </td>
+                                            <td><input type="number" ng-model="award.quantity" style="width:60px;"></td>
+                                            <td><input type="number" ng-model="award.odds" style="width:90px;"></td>
+                                            <td><input type="number" ng-model="award.threshold" style="width:90px;" placeholder="秒"></td>
+                                            <!--<td><input type="number" ng-model="award.wonCount" style="width:60px;"></td>-->
+                                            <td>{{award.newWonCount}}</td>
+                                            <td>
+                                                <a ng-click="update(award)">更新</a>
+                                                <a ng-click="remove(award)">删除</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<section class="raffle" ng-controller="RaffleController" disable-touch>
+    <!--<div class="title">
+        <div><img src="assets/images/raffle-head.png" /></div>
+        <div class="title2"><img src="" /></div>
+    </div>-->
+    <div class="raffle-content">
+        <div class="bg">
+            <div class="rbg1"><img src="assets/image/block-luck-tlight2.png" /></div>
+            <div class="rbg2"><img src="assets/image/block-luck-tlight1.png" /></div>
+            <div class="raffle-form">
+                <div class="raffle-inner">
+                    <div class="present1"></div>
+                    <div class="present4"></div>
+                    <div class="present2"></div>
+                    <div class="present4"></div>
+                    <div class="present3"></div>
+                    <div class="present4"></div>
+                    <div class="present1"></div>
+                    <div class="present4"></div>
+                    <div class="present2"></div>
+                    <div class="present4"></div>
+                    <div class="present3"></div>
+                    <div class="present4"></div>
+                </div>
+                <div class="raffle-btn" ng-click="getLoot()" ga-event="try"></div>
+            </div>
+        </div>
+        <!--<div class="bg2"><img src="assets/images/raffle-bg2.jpg" /></div>-->
+
+    </div>
+
+    <div class="hb-luck upper on">
+
+    </div>
+
+    <!--中奖结果浮层-->
+    <div class="modal modal-all" ng-class="{on:showResult}">
+        <div class="modal-bg">
+            <!--ng-click="showResult=false"-->
+            <a class="state" sc-on-add=".share" sc-on-remove=".modal-all"></a>
+        </div>
+        <div class="animate" ng-hide="loot.code=='NONE'">
+            <img src="assets/image/hb-prize-animate.png" />
+            <a class="state" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A1-1'}">
+            <img src="assets/image/hb-prize-1a.png" />
+            <a class="state state2" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A1-2'}">
+            <img src="assets/image/hb-prize-1b.png" />
+            <a class="state state2" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A2-1'}">
+            <img src="assets/image/hb-prize-2a-1.png" />
+            <a class="state state2" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A2-2'}">
+            <img src="assets/image/hb-prize-2b-1.png" />
+            <a class="state state2" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A3'}">
+            <img src="assets/image/hb-prize-3.png" />
+            <a class="state" sc-on-add=".share"></a>
+        </div>
+        <div class=" border-img" ng-class="{appear:loot.code=='NONE'}">
+            <img src="assets/image/hb-prize-not.png" />
+            <a class="state" sc-on-add=".share"></a>
+        </div>
+    </div>
+
+</section>

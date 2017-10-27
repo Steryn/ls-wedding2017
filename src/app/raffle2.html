@@ -1,0 +1,57 @@
+<section class="raffle2" ng-controller="RaffleController2" disable-touch>
+    <div class="club-raffle" ng-class="{on:sc.area!='xunzhan'}">
+        <div class="raffle2-cir"></div>
+        <div class="raffle2-cir2"></div>
+    </div>
+    <div class="tour-raffle" ng-class="{on:area=='xunzhan'}">
+        <div class="raffle2-xz"></div>
+        <div class="raffle2-xz2"></div>
+    </div>
+    <div class="raffle2-cir3">
+        <div class="raffle2-arrow">
+            <div class="playbtn"><img src="assets/image/xz-luck-point.png" /></div>
+            <div class="supernatant"><img src="assets/image/xz-luck-point2.png" /></div>
+            <a title="开始抽奖" ng-click="getLoot()"></a>
+        </div>
+    </div>
+
+    <!--中奖结果浮层-->
+    <div class="modal modal-all" ng-class="{on:showResult}">
+        <div class="modal-bg">
+            <a class="state" sc-on-add=".share" sc-on-remove=".modal-all"></a>
+        </div>
+        <div class="animate" ng-hide="loot.code=='NONE'">
+            <img ng-show="area=='xunzhan'" src="assets/image/xz-prize-animate.png" />
+            <img ng-show="area=='club'" src="assets/image/club-prize-animate.png" />
+            <!--<a class="state" sc-on-add=".share"></a>-->
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A1-1'}">
+            <img ng-show="area=='xunzhan'" src="assets/image/xz-prize-1a.png" />
+            <img ng-show="area=='club'" src="assets/image/club-prize-1.png" />
+            <a class="state state1" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A1-2'}">
+            <img ng-show="area=='xunzhan'" src="assets/image/xz-prize-1b.png" />
+            <img ng-show="area=='club'" src="assets/image/club-prize-2.png" />
+            <a class="state state1" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A2-1'}">
+            <img src="assets/image/xz-prize-2a.png" />
+            <a class="state state1" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A2-2'}">
+            <img src="assets/image/xz-prize-2b.png" />
+            <a class="state state1" sc-on-add=".share"></a>
+        </div>
+        <div class="border-img" ng-class="{appear:loot.code=='A3'}">
+            <img src="assets/image/xz-prize-3.png" />
+            <a class="state" sc-on-add=".share"></a>
+        </div>
+        <div class=" border-img" ng-class="{appear:loot.code=='NONE'}">
+            <img ng-show="area=='xunzhan'" src="assets/image/xz-prize-not.png" />
+            <img ng-show="area=='club'" src="assets/image/club-prize-not.png" />
+            <a class="state" sc-on-add=".share"></a>
+        </div>
+    </div>
+
+</section>
